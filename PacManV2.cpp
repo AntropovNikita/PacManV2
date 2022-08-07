@@ -13,8 +13,17 @@ int main()
 {
 	try
 	{
-		std::string file_name = "level12.txt";
-		FileReader reader(file_name);
+		std::string file_name = "level1.txt";
+		FileReader reader("");
+
+		if (reader.open("level1.txt"))
+			cout << "fail open" << endl;
+
+		while (!(reader.is_end()))
+			cout << reader.readline() << endl;
+
+		if (reader.close())
+			cout << "fail close" << endl;
 	}
 	catch (WrongFileNameException e)
 	{
