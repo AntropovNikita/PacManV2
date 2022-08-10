@@ -15,15 +15,21 @@ int main()
 	{
 		std::string file_name = "level1.txt";
 		FileReader reader("");
+		
+		if (reader.open(file_name))
+		{
+			cout << "File " << file_name << " is opened\n";
 
-		if (reader.open("level1.txt"))
-			cout << "fail open" << endl;
+			while (!(reader.is_end()))
+				cout << reader.read_line() << "\n";
 
-		while (!(reader.is_end()))
-			cout << reader.readline() << endl;
-
-		if (reader.close())
-			cout << "fail close" << endl;
+			if (reader.close())
+				cout << "File " << file_name << " is closed\n";
+			else
+				throw FileOpenException("Fail close file");
+		}
+		else
+			throw FileOpenException("Fail open file");
 	}
 	catch (WrongFileNameException e)
 	{

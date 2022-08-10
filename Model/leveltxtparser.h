@@ -32,5 +32,5 @@ class LevelTxtParser : public IDataParser<filestructs::LevelInfo, std::vector<st
 template<typename T>
 inline T LevelTxtParser::__get_val(std::string line)
 {
-	return std::static_cast<T>(line);
+	return static_cast<T>(line);
 }
